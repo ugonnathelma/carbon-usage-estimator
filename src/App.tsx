@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { ConnectedForm } from "./components/Form/Form";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { ConnectedChart } from "./components/Chart/Chart";
+import { Box, Grid } from "@mui/material";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Box p={6} mt={3}>
+          <Grid container spacing={6}>
+            <Grid item xs={12} md={6}>
+              <ConnectedChart />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ConnectedForm />
+            </Grid>
+          </Grid>
+        </Box>
+      </Provider>
     </div>
   );
-}
+};
 
 export default App;
