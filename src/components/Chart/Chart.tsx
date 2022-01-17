@@ -16,6 +16,7 @@ import {
   Select,
   SelectChangeEvent,
   Stack,
+  Box,
 } from "@mui/material";
 
 import { connect } from "react-redux";
@@ -71,24 +72,30 @@ const Chart = ({
         </Select>
       </FormControl>
       <br />
-      <ResponsiveContainer width="100%" minHeight={"400px"}>
-        <LineChart
-          data={filteredEstimates.length ? filteredEstimates : estimates}
+      <Box ml={"-45px"}>
+        <ResponsiveContainer
+          width="100%"
+          minHeight={"400px"}
+          minWidth={"270px"}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="estimated_at" />
-          <YAxis dataKey="carbon_kg" />
-          <Tooltip />
-          <Legend />
-          <Line
-            name="Carbon Usage (KG)"
-            type="monotone"
-            dataKey="carbon_kg"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>{" "}
+          <LineChart
+            data={filteredEstimates.length ? filteredEstimates : estimates}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="estimated_at" />
+            <YAxis dataKey="carbon_kg" />
+            <Tooltip />
+            <Legend />
+            <Line
+              name="Carbon Usage (KG)"
+              type="monotone"
+              dataKey="carbon_kg"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>{" "}
+      </Box>
     </Stack>
   );
 };
